@@ -3,7 +3,6 @@ import Header from '../Header';
 import './index.css';  // Assuming you will define specific styles for JobCard
 import Swal from 'sweetalert2';
 
-
 class JobCard extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +29,7 @@ class JobCard extends Component {
                 if (newProgress >= 100) {
                     clearInterval(interval);
                     this.setState({ uploadProgress: 100, isUploading: false, uploadComplete: true },
-                        () => Swal.fire({  // Callback after state is set
+                        () => Swal.fire({
                             title: 'Success!',
                             text: 'Your resume has been uploaded successfully!',
                             icon: 'success',
@@ -57,16 +56,19 @@ class JobCard extends Component {
                 </section>
                 <section className="file-upload">
                     <h4>Upload Your Resume</h4>
-                    <input type="file" onChange={this.handleFileChange} disabled={isUploading} />
-                    {file && (
-                        <button onClick={this.handleUpload} disabled={isUploading}>
-                            {isUploading ? `Uploading ${uploadProgress}%` : 'Upload'}
-                        </button>
+                    {!uploadComplete && ( // Only show upload components if upload not complete
+                        <>
+                            <input type="file" onChange={this.handleFileChange} disabled={isUploading} />
+                            {file && (
+                                <button onClick={this.handleUpload} disabled={isUploading}>
+                                    {isUploading ? `Uploading ${uploadProgress}%` : 'Upload'}
+                                </button>
+                            )}
+                            {isUploading && <div className="progress-bar" style={{ width: `${uploadProgress}%` }}></div>}
+                        </>
                     )}
-                    {isUploading && <div className="progress-bar" style={{ width: `${uploadProgress}%` }}></div>}
-                    {/* {uploadComplete && <div className="upload-complete-message"> Upload Complete!!!! </div>} */}
+                    {uploadComplete && <div className="upload-complete-message">Upload Complete!</div>}
                 </section>
-                {/* Swal.fire("SweetAlert2 is working!"); */}
             </div>
             </>
         );
