@@ -2,41 +2,50 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Roboto font for cleaner look */
+    background: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Home Component Styles */
 .home {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-image: url('https://example.com/background.jpg'); /* Replace with your actual image URL */
+    padding: 40px 20px;
+    background-image: url('https://example.com/background.jpg'); /* Replace with actual image URL */
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    animation: fadeIn 0.5s ease-out; /* Smooth fade in effect */
 }
 
 .main-content {
     max-width: 800px;
     width: 100%;
     background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 100px;
     opacity: 0.95;
+    transform: translateY(-20px);
+    animation: slideUpFadeIn 0.5s ease-out forwards; /* Slide up and fade in animation */
 }
 
 .apply-btn {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 12px 25px;
+    font-size: 18px;
     background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .apply-btn:hover {
@@ -44,31 +53,49 @@ body, html {
 }
 
 .main-content h1 {
-    color: #333;
-    font-size: 24px;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
 .main-content p {
-    color: #555;
-    font-size: 16px;
+    color: #34495e;
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
     .home {
-        padding: 10px;
+        padding: 20px;
     }
 
     .main-content {
-        padding: 10px;
+        padding: 20px;
     }
 
     .main-content h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .main-content p {
-        font-size: 14px;
+        font-size: 16px;
+    }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 0.95;
+        transform: translateY(0);
     }
 }
